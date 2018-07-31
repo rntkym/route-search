@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Route Search</title>
+<meta charset="utf-8">
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true_or_false"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+<script type="text/javascript" src="route_search.js"></script>
+
+<style>
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+}
+#map-canvas {
+height: 100%;
+width: 65%;
+}
+#content_pane{
+float:right;
+width:31%;
+padding-left: 2%;
+padding-right: 2%;
+}
+#button {
+width:100%;
+color: #ffffff;
+border-style: none;
+}
+#button2 {
+width:10%;
+color: #ffffff;
+border-style: none;
+}
+
+</style>
+</head>
+
+<body>
+<div id="content_pane">
+
+<button id="button" style="background-color: #1e90ff;">1日の活動時間 </button>
+<input id="dayTime" type="text" placeholder="時間" value="" style="border:solid 1px #1e90ff;">
+
+<button id="button" style="background-color: #3cb371;">宿泊地</button>
+<table id="table2">
+<tr><td class="lodge"><input type="text" placeholder="宿泊地" value="" style="border:solid 1px #3cb371;"></td></tr>
+</table>
+<button id="button2" style="background-color: #3cb371;" onClick="AddTableRows(2);">+</button>
+<button id="button2" style="background-color: #3cb371;" onClick="deleteTextbox(2);">-</button>
+
+
+<button id="button" style="background-color:#ffa500;" >観光地</button>
+<table id="table1">
+<tr>
+<td class="waypoints"><input type="text" placeholder="観光地" value="" style="border:solid 1px #ffa500;"></td>
+<td class="time" ><input type="text" placeholder="時間" value="" style="border:solid 1px #ffa500;"></td>
+</tr>
+</table>
+<button id="button2" style="background-color: #ffa500;" onClick="AddTableRows(1);">+</button>
+<button id="button2" style="background-color: #ffa500;" onClick="deleteTextbox(1);">-</button>
+
+<button id="button" style="background-color: #fa8072;" onClick="read();">経路探索</button>
+
+<button id="button" style="background-color: #E09F7D;" onClick="changeDay();">表示日切り替え</button>
+
+<div id="outputDiv"></div>
+<div id="directions-panel"></div> 
+</div>
+
+<div id="map-canvas" ></div>
+
+</body>
+</html>
