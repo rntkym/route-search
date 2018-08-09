@@ -1,78 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Route Search</title>
-<meta charset="utf-8">
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true_or_false"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script type="text/javascript" src="route_search.js"></script>
+    <head>
+        <title>Route Search</title>
+        <meta charset="utf-8">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+            rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true_or_false"></script>
+        <script type="text/javascript" src="route_search.js"></script>
 
-<style>
-html, body {
-height: 100%;
-padding: 5px;
-}
-#map-canvas {
-height: 100%;
-width: 65%;
-padding: 10px;
-}
-#content_pane{
-float:right;
-width: 35%;
-padding: 10px;
-}
+        <style>
+        html, body {
+            height: 100%;
+            padding: 5px;
+        }
+        #map-canvas {
+            height: 100%;
+            width: 65%;
+            padding: 10px;
+        }
+        #content_pane {
+            float:right;
+            width: 35%;
+            padding: 10px;
+        }
+        .badge {
+            font-weight: normal !important;
+        }
+        ul {
+            margin:0px;
+            padding:0px;
+            list-style: none;
+        }
+        li {
+            padding-bottom: 5px;
+        }
+        </style>
+    </head>
 
-.badge{
-    font-weight: normal !important;
-}
-ul{
-    margin:0px;
-    padding:0px;
-    list-style: none;
-}
-li{
-    padding-bottom: 5px;
-}
+    <body>
+        <div id="content_pane">
+            <div class="card">
+                <div class="card-header">
+                    観光情報の入力
+                </div>
+                <div class="card-body">
 
-</style>
+                    <h5><span class="badge badge-info">宿泊地</span></h5>
+                    <input class="form-control" id="lodge" type="text" placeholder="宿泊地" value="">
+                    <br>
+                    <h5><span class="badge badge-info">観光地</span></h5>      
+                    <ul>
+                        <li><input class="place form-control" type="text" placeholder="観光地" value=""></li>
+                    </ul>  
+                    <button id="button2" class="btn btn-info" onClick="AddTableRows();">+</button>
+                    <button id="button2" class="btn btn-info" onClick="deleteTextbox();">-</button>                
 
-
-</head>
-
-<body>
-<div id="content_pane">
-    <div class="card">
-        <div class="card-header">
-            観光情報の入力
+                    <br><br>
+                    <button type="submit" class="btn btn-primary" onClick="read();">経路探索</button>
+                </div>
+            </div>
+            <div id="directions-panel"></div> 
         </div>
-        <div class="card-body">
+        <div id="map-canvas" ></div>
 
-            <h5><span class="badge badge-info">宿泊地</span></h5>
-            <input class="form-control" id="lodge" type="text" placeholder="宿泊地" value="からすま京都ホテル">
-            <br>
-            <h5><span class="badge badge-info">観光地</span></h5>      
-            <ul>
-                <li><input class="place form-control" type="text" placeholder="観光地" value="金閣寺"></li>
-                <li><input class="place form-control" type="text" placeholder="観光地" value="銀閣寺"></li>
-                <li><input class="place form-control" type="text" placeholder="観光地" value="三十三間堂"></li>
-                <li><input class="place form-control" type="text" placeholder="観光地" value="二条城"></li>
-            </ul>  
-            <button id="button2" class="btn btn-info" onClick="AddTableRows();">+</button>
-            <button id="button2" class="btn btn-info" onClick="deleteTextbox();">-</button>                
-
-            <br><br>
-            <button type="submit" class="btn btn-primary" onClick="read();">経路探索</button>
-            <button type="submit" class="btn btn-primary" onClick="changeDay();">表示日切り替え</button>
-        </div>
-    </div>
-    <div id="directions-panel"></div> 
-</div>
-
-<div id="map-canvas" ></div>
-
-</body>
+    </body>
 </html>
