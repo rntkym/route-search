@@ -1,7 +1,6 @@
-Route Search
-====
+# route-search
 
-Route Search is an application that output the optimal tourist route when you input a lodge and some tourist spot.
+宿泊地といくつかの観光地を入力すると、宿泊地を始点・終点としたおすすめ観光ルートを表示するルート探索アプリ
 
-## Demo
+# デモ
 ![result](https://github.com/ran-shimizu/route-search/blob/update-demo/RouteSearch.gif)
